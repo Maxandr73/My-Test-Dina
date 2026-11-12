@@ -220,6 +220,28 @@ h2{font-weight:300;font-size:clamp(30px,3.8vw,46px);line-height:1.1;letter-spaci
   padding:12px 24px;border-radius:999px;text-decoration:none;color:var(--ink)}
 .route:hover{background:var(--ink);color:#fff}
 
+/* свечение и волна на кнопках */
+.pill,.pill-orange,.btn-ghost,.route{
+  position:relative;overflow:hidden;
+  transition:box-shadow .25s ease,background .2s ease,color .2s ease,border-color .2s ease;
+}
+.pill::after,.pill-orange::after,.btn-ghost::after,.route::after{
+  content:"";position:absolute;top:-60%;left:-90%;width:45%;height:220%;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.45),transparent);
+  transform:skewX(-22deg);transition:left .65s ease;pointer-events:none;
+}
+.pill:hover::after,.pill:focus-visible::after,
+.pill-orange:hover::after,.pill-orange:focus-visible::after,
+.btn-ghost:hover::after,.btn-ghost:focus-visible::after,
+.route:hover::after,.route:focus-visible::after{left:140%}
+/* постоянное мягкое свечение оранжевых кнопок, при наведении - сильнее */
+.pill-orange{box-shadow:0 6px 22px rgba(220,144,32,.35)}
+.pill-orange:hover,.pill-orange:focus-visible{box-shadow:0 10px 38px rgba(220,144,32,.55)}
+.pill:hover,.pill:focus-visible{box-shadow:0 8px 30px rgba(35,33,31,.4)}
+.btn-ghost:hover,.btn-ghost:focus-visible,.route:hover,.route:focus-visible{
+  box-shadow:0 8px 26px rgba(28,27,26,.25);
+}
+
 /* подвал */
 footer{background:var(--dark);color:#A9A59E;padding:40px 0;font-size:14px;margin-top:20px}
 footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center}
