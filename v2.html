@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ООО «ДИНА» — металлообработка полного цикла, Чайковский | версия 2</title>
+<meta name="description" content="Токарная и фрезерная обработка с ЧПУ, термообработка, сварка, цинкование. Полный цикл в Чайковском (Пермский край) с 1990 года.">
+<link rel="icon" href="logo.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ============ ТОКЕНЫ (бренд: оранж #DC9020, графит #2B2A29) ============ */
+:root{
+  --bg:#F4F4F2;
+  --card:#FFFFFF;
+  --ink:#1C1B1A;
+  --soft:#5B5852;
+  --line:#E4E3DF;
+  --accent:#DC9020;
+  --accent-dark:#BC7914;
+  --tile:#ECECEA;
+  --dark:#23211F;
+  --radius:20px;
+  --maxw:1200px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition:none!important;animation:none!important}
+}
+body{
+  font-family:"Inter",system-ui,sans-serif;font-size:16.5px;line-height:1.6;
+  color:var(--ink);background:var(--bg);
+}
+.mono{font-family:"IBM Plex Mono",monospace}
+a{color:var(--ink);text-underline-offset:3px}
+img{max-width:100%;display:block}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+
+/* ============ ШАПКА ============ */
+.topbar{background:var(--dark);color:#C9C6C0;font-size:13.5px}
+.topbar .wrap{display:flex;justify-content:space-between;gap:14px;padding:8px 28px;flex-wrap:wrap}
+.topbar a{color:#fff;text-decoration:none;font-weight:500}
+.topbar .dim2{color:#8A8680}
+header.site{position:sticky;top:0;z-index:50;background:rgba(244,244,242,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;gap:26px;padding:14px 28px}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo img{height:44px;width:auto;border-radius:8px}
+.logo .sub{font-size:12px;color:var(--soft);line-height:1.3}
+nav.main{display:flex;gap:24px;margin-left:auto}
+nav.main a{color:var(--ink);text-decoration:none;font-size:14.5px;font-weight:500}
+nav.main a:hover{color:var(--accent-dark)}
+.pill{
+  display:inline-block;background:var(--dark);color:#fff;text-decoration:none;
+  font-size:14.5px;font-weight:500;padding:11px 22px;border-radius:999px;white-space:nowrap;
+}
+.pill:hover{background:#000;color:#fff}
+.pill-orange{background:var(--accent);color:#fff;font-size:16px;padding:14px 28px}
+.pill-orange:hover{background:var(--accent-dark);color:#fff}
+.burger{display:none;margin-left:auto;background:none;border:1px solid var(--line);border-radius:999px;padding:9px 16px;font:inherit;font-size:14px;cursor:pointer}
+
+/* ============ ГЕРОЙ ============ */
+.hero{padding:72px 0 56px}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.kicker{display:flex;align-items:center;gap:10px;font-family:"IBM Plex Mono";font-size:13.5px;color:var(--soft);margin-bottom:22px}
+.kicker::before{content:"";width:10px;height:10px;background:var(--accent);border-radius:2px;flex:none}
+.hero h1{
+  font-weight:300;font-size:clamp(42px,5.6vw,74px);line-height:1.06;letter-spacing:-.02em;
+}
+.hero h1 .hl{position:relative;white-space:nowrap}
+.hero h1 .hl::after{
+  content:"";position:absolute;left:-2px;right:-2px;bottom:.08em;height:.32em;
+  background:var(--accent);opacity:.28;z-index:-1;border-radius:3px;
+}
+.hero .lead{color:var(--soft);font-size:18px;max-width:32em;margin:24px 0 32px}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.btn-ghost{
+  display:inline-block;border:1.5px solid var(--ink);color:var(--ink);text-decoration:none;
+  font-size:16px;font-weight:500;padding:13px 26px;border-radius:999px;
+}
+.btn-ghost:hover{background:var(--ink);color:#fff}
+/* панель с техническим эскизом */
+.sketch{
+  background:var(--card);border-radius:var(--radius);padding:26px 26px 18px;
+  box-shadow:0 18px 50px rgba(28,27,26,.08);
+}
+.sketch .sk-title{font-family:"IBM Plex Mono";font-size:12.5px;color:var(--soft);margin-bottom:8px}
+.sketch svg{width:100%;height:auto}
+
+/* ============ ПЛИТКИ ЦИФР ============ */
+.stats{display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:16px;margin-top:64px}
+.stat{
+  background:var(--card);border-radius:var(--radius);padding:24px 24px 20px;
+}
+.stat .num{font-weight:300;font-size:clamp(34px,3.4vw,46px);letter-spacing:-.02em;line-height:1.05}
+.stat .lbl{font-size:13.5px;color:var(--soft);margin-top:8px}
+.stat.hot{background:var(--accent);color:#fff}
+.stat.hot .lbl{color:rgba(255,255,255,.85)}
+
+/* ============ СЕКЦИИ ============ */
+section{padding:84px 0}
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:44px;flex-wrap:wrap}
+h2{font-weight:300;font-size:clamp(30px,3.8vw,46px);line-height:1.1;letter-spacing:-.02em}
+.sec-head p{color:var(--soft);max-width:36em;margin-top:12px}
+.tag{font-family:"IBM Plex Mono";font-size:13px;color:var(--accent-dark);border:1px solid var(--accent);
+  padding:7px 14px;border-radius:999px;white-space:nowrap}
+
+/* заказчики */
+.clients{display:flex;flex-wrap:wrap;gap:12px}
+.clients span{
+  background:var(--card);border:1px solid var(--line);border-radius:999px;
+  padding:11px 22px;font-weight:500;font-size:16px;
+}
+
+/* услуги */
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.svc{
+  background:var(--card);border-radius:var(--radius);padding:24px;
+  transition:transform .18s ease, box-shadow .18s ease;
+}
+.svc:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(28,27,26,.08)}
+.svc .n{font-family:"IBM Plex Mono";font-size:12.5px;color:var(--accent-dark)}
+.svc h3{font-size:17px;font-weight:600;margin:10px 0 8px}
+.svc p{font-size:14.5px;color:var(--soft)}
+.svc p .mono{font-size:13.5px;color:var(--accent-dark)}
+
+/* таблица оборудования */
+.equip{background:var(--card);border-radius:var(--radius);overflow:hidden}
+.equip table{width:100%;border-collapse:collapse;font-size:15px}
+.equip th{text-align:left;font-size:12.5px;font-weight:600;letter-spacing:.04em;color:var(--soft);
+  text-transform:uppercase;padding:16px 22px;border-bottom:1px solid var(--line);background:var(--tile)}
+.equip td{padding:14px 22px;border-bottom:1px solid var(--line);vertical-align:top}
+.equip tr:last-child td{border-bottom:0}
+.equip td.mono{font-size:14px}
+.note{margin-top:14px;font-size:13.5px;color:var(--soft);font-family:"IBM Plex Mono"}
+
+/* работы */
+.works{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.work{background:var(--card);border-radius:var(--radius);overflow:hidden}
+.work .ph{
+  aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;
+  background:repeating-linear-gradient(45deg,#E9E8E4 0 2px,#F1F0ED 2px 14px);
+  color:var(--soft);font-family:"IBM Plex Mono";font-size:12.5px;text-align:center;padding:12px;
+}
+.work .body{padding:20px 22px}
+.work .body p{font-size:14px;color:var(--soft);margin-top:6px}
+.work .body .mono{font-size:13px;color:var(--accent-dark)}
+
+/* процесс */
+.process{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;counter-reset:step}
+.step{background:var(--card);border-radius:var(--radius);padding:26px 24px;counter-increment:step}
+.step::before{
+  content:counter(step);display:inline-flex;align-items:center;justify-content:center;
+  width:34px;height:34px;border-radius:50%;background:var(--accent);color:#fff;
+  font-weight:600;font-size:15px;margin-bottom:16px;
+}
+.step h3{font-size:16.5px;font-weight:600;margin-bottom:8px}
+.step p{font-size:14px;color:var(--soft)}
+
+/* о компании */
+.about{display:grid;grid-template-columns:1.2fr 1fr;gap:56px;align-items:start}
+.about p{color:var(--soft);margin-bottom:14px;max-width:36em}
+.about .years{border-left:3px solid var(--accent);padding-left:22px;font-size:15px}
+.about .years div{margin-bottom:16px}
+.about .years .mono{color:var(--accent-dark);font-size:13.5px}
+
+/* вакансии */
+.jobs{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:26px}
+.job{background:var(--card);border-radius:var(--radius);padding:26px 24px;display:flex;flex-direction:column}
+.job h3{font-size:18px;font-weight:600;margin-bottom:8px}
+.job .salary{font-family:"IBM Plex Mono";font-size:14.5px;color:var(--accent-dark);margin-bottom:12px}
+.job ul{list-style:none;margin-bottom:20px;flex:1}
+.job li{font-size:14.5px;color:var(--soft);padding-left:16px;position:relative;margin-bottom:5px}
+.job li::before{content:"—";position:absolute;left:0;color:#C9C6C0}
+.jobs-note{font-size:14.5px;color:var(--soft);max-width:46em}
+.jobs-note a{color:var(--accent-dark)}
+
+/* форма */
+.form-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:56px;align-items:start}
+.form-side h2{margin-bottom:14px}
+.form-side p{color:var(--soft);max-width:30em;margin-bottom:14px}
+.form-side .mono{font-size:14px}
+.form-card{background:var(--card);border-radius:var(--radius);padding:32px}
+.field{margin-bottom:18px}
+.field label{display:block;font-size:13.5px;font-weight:600;margin-bottom:7px}
+.field input,.field textarea{
+  width:100%;border:1px solid var(--line);border-radius:12px;background:var(--bg);
+  padding:13px 15px;font:inherit;font-size:15.5px;color:var(--ink);
+}
+.field input:focus,.field textarea:focus{outline:2px solid var(--accent);outline-offset:0;border-color:var(--accent)}
+.field textarea{min-height:110px;resize:vertical}
+.file-field{
+  border:1.5px dashed #C9C6C0;border-radius:12px;background:var(--bg);
+  padding:18px;font-size:14.5px;color:var(--soft);cursor:pointer;display:block;
+}
+.file-field:hover{border-color:var(--accent)}
+.file-field input{display:none}
+.file-field .fname{font-family:"IBM Plex Mono";font-size:13px;color:var(--accent-dark);display:block;margin-top:6px}
+.consent{display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--soft);margin:18px 0 22px}
+.consent input{margin-top:3px}
+
+/* контакты */
+.contacts-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.contact-list{list-style:none}
+.contact-list li{display:grid;grid-template-columns:120px 1fr;gap:16px;padding:14px 0;
+  border-bottom:1px solid var(--line);font-size:16px}
+.contact-list li:first-child{border-top:1px solid var(--line)}
+.contact-list .k{font-family:"IBM Plex Mono";font-size:12.5px;color:var(--soft);padding-top:4px}
+.stamp{border:2px solid var(--ink);background:var(--card);font-family:"IBM Plex Mono";font-size:14px;border-radius:6px;overflow:hidden}
+.stamp .row{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--ink)}
+.stamp .row:last-child{border-bottom:0}
+.stamp .cell{padding:13px 15px;border-right:1px solid var(--ink)}
+.stamp .cell:last-child{border-right:0}
+.stamp .lbl{font-size:11px;color:var(--soft);display:block;margin-bottom:3px}
+.stamp .big{font-size:19px;font-weight:500}
+.route{display:inline-block;margin-top:18px;font-size:15px;font-weight:500;border:1.5px solid var(--ink);
+  padding:12px 24px;border-radius:999px;text-decoration:none;color:var(--ink)}
+.route:hover{background:var(--ink);color:#fff}
+
+/* подвал */
+footer{background:var(--dark);color:#A9A59E;padding:40px 0;font-size:14px;margin-top:20px}
+footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center}
+footer .fl{display:flex;align-items:center;gap:12px}
+footer img{height:34px;width:auto;border-radius:6px}
+footer .mono{font-size:12.5px}
+
+/* ============ АДАПТИВ ============ */
+@media (max-width:1000px){
+  .hero-grid,.about,.contacts-grid,.form-grid{grid-template-columns:1fr}
+  .stats{grid-template-columns:1fr 1fr}
+  .svc-grid,.works,.jobs{grid-template-columns:1fr 1fr}
+  .process{grid-template-columns:1fr 1fr}
+  nav.main{display:none;position:absolute;top:100%;left:0;right:0;background:var(--bg);
+    flex-direction:column;gap:0;padding:10px 28px 18px;border-bottom:1px solid var(--line)}
+  nav.main.open{display:flex}
+  nav.main a{padding:12px 0;border-bottom:1px solid var(--line)}
+  .burger{display:block}
+  header.site .pill{display:none}
+}
+@media (max-width:620px){
+  .svc-grid,.works,.jobs,.process,.stats{grid-template-columns:1fr}
+  section{padding:60px 0}
+  .hero{padding:52px 0 44px}
+  .contact-list li{grid-template-columns:1fr;gap:4px}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== Верхняя служебная полоса ===== -->
+<div class="topbar">
+  <div class="wrap">
+    <span>Чайковский, Пермский край · тер. Сутузово, д. 3, корп. 1 · пн–пт 08:00–17:00</span>
+    <span><a href="tel:+73424174055">+7 (34241) 7-40-55</a> <span class="dim2">·</span> <a href="tel:+79024789624">+7 (902) 478-96-24</a></span>
+  </div>
+</div>
+
+<!-- ===== Шапка ===== -->
+<header class="site">
+  <div class="wrap">
+    <a class="logo" href="#top">
+      <img src="logo.png" alt="ДИНА — металлообработка полного цикла">
+      <span class="sub">металлообработка<br>полного цикла</span>
+    </a>
+    <button class="burger" id="burger" aria-label="Открыть меню">Меню</button>
+    <nav class="main" id="nav">
+      <a href="#services">Услуги</a>
+      <a href="#equip">Оборудование</a>
+      <a href="#works">Наши работы</a>
+      <a href="#process">Заказчику</a>
+      <a href="#jobs">Вакансии</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+    <a class="pill" href="#order">Отправить чертёж</a>
+  </div>
+</header>
+
+<!-- ===== Герой ===== -->
+<div class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <p class="kicker">ООО «ДИНА» · Чайковский · с 1990 года</p>
+        <h1>Металлообработка <span class="hl">полного цикла</span>: от заготовки до покрытия</h1>
+        <p class="lead">Токарные и фрезерные работы на собственных станках с ЧПУ, термообработка, сварка, цинкование и покраска - всё под одной крышей. Единичные заказы и серия по чертежам.</p>
+        <div class="hero-actions">
+          <a class="pill pill-orange" href="#order">Отправить чертёж</a>
+          <a class="btn-ghost" href="#jobs">Ищу работу — вакансии</a>
+        </div>
+      </div>
+      <div class="sketch" aria-label="Эскиз детали по чертежу заказчика">
+        <p class="sk-title">вал ступенчатый · эскиз по чертежу заказчика</p>
+        <svg viewBox="0 0 640 430" role="img" aria-label="Технический эскиз вала с размерами">
+          <!-- осев линия -->
+          <line x1="40" y1="210" x2="600" y2="210" stroke="#8A8680" stroke-width="1" stroke-dasharray="16 6 3 6"/>
+          <!-- вал: ступени -->
+          <g fill="none" stroke="#1C1B1A" stroke-width="2">
+            <rect x="80" y="186" width="140" height="48"/>
+            <rect x="220" y="160" width="240" height="100"/>
+            <rect x="460" y="176" width="100" height="68"/>
+          </g>
+          <!-- размер общей длины -->
+          <g stroke="#8A8680" stroke-width="1">
+            <line x1="80" y1="310" x2="560" y2="310"/>
+            <line x1="80" y1="298" x2="80" y2="322"/>
+            <line x1="560" y1="298" x2="560" y2="322"/>
+          </g>
+          <rect x="292" y="296" width="56" height="26" fill="#F4F4F2"/>
+          <text x="320" y="314" text-anchor="middle" font-family="IBM Plex Mono" font-size="14" fill="#1C1B1A">2000</text>
+          <!-- размер диаметра слева -->
+          <g stroke="#8A8680" stroke-width="1">
+            <line x1="52" y1="160" x2="52" y2="260"/>
+            <line x1="44" y1="160" x2="60" y2="160"/>
+            <line x1="44" y1="260" x2="60" y2="260"/>
+          </g>
+          <text x="46" y="146" font-family="IBM Plex Mono" font-size="14" fill="#1C1B1A">Ø600</text>
+          <!-- выноски -->
+          <g stroke="#8A8680" stroke-width="1">
+            <line x1="340" y1="160" x2="430" y2="76"/>
+            <line x1="140" y1="186" x2="92" y2="104"/>
+            <line x1="516" y1="244" x2="566" y2="330"/>
+          </g>
+          <rect x="334" y="154" width="9" height="9" fill="#DC9020"/>
+          <rect x="134" y="180" width="9" height="9" fill="#DC9020"/>
+          <rect x="510" y="238" width="9" height="9" fill="#DC9020"/>
+          <text x="440" y="72" font-family="IBM Plex Mono" font-size="13" fill="#5B5852">шлифовка Ra 1,6</text>
+          <text x="30" y="96" font-family="IBM Plex Mono" font-size="13" fill="#5B5852">сталь 45</text>
+          <text x="452" y="346" font-family="IBM Plex Mono" font-size="13" fill="#5B5852">допуск ±0,01</text>
+          <!-- 4-я ось -->
+          <g stroke="#DC9020" stroke-width="1.5" fill="none">
+            <circle cx="560" cy="210" r="16"/>
+            <line x1="560" y1="188" x2="560" y2="232"/>
+            <line x1="548" y1="198" x2="572" y2="222"/>
+          </g>
+          <text x="498" y="164" font-family="IBM Plex Mono" font-size="13" fill="#DC9020">4-я ось</text>
+        </svg>
+      </div>
+    </div>
+
+    <!-- плитки цифр -->
+    <div class="stats">
+      <div class="stat hot"><div class="num">35 лет</div><div class="lbl">на рынке металлообработки - с 1990 года</div></div>
+      <div class="stat"><div class="num">12</div><div class="lbl">операций полного цикла на одной площадке</div></div>
+      <div class="stat"><div class="num">Ø600×2000</div><div class="lbl">мм - габариты токарной обработки</div></div>
+      <div class="stat"><div class="num">36–38</div><div class="lbl">сотрудников в собственном цеху</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== Заказчики ===== -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <h2>Нам доверяют серийные заказы</h2>
+        <p>Предприятия авиационной и нефтегазовой отрасли Пермского края работают с нами годами.</p>
+      </div>
+    </div>
+    <div class="clients">
+      <span>Авиадвигатель</span><span>Пермские насосы</span><span>Навигатор</span><span>Эрис</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Услуги ===== -->
+<section id="services" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <h2>Услуги: 12 операций на одной площадке</h2>
+        <p>Не нужно возить деталь по трём подрядчикам - обработка, термичка и покрытие в одном месте.</p>
+      </div>
+      <span class="tag">единичные и серийные заказы</span>
+    </div>
+    <div class="svc-grid">
+      <div class="svc"><span class="n">01</span><h3>Токарная обработка</h3><p>Тела вращения <span class="mono">Ø до 600 мм, длина до 2000 мм</span> на универсальных станках и центрах с ЧПУ.</p></div>
+      <div class="svc"><span class="n">02</span><h3>Фрезерная обработка</h3><p>Универсальные фрезерные и обрабатывающие центры с ЧПУ, <span class="mono">в том числе с 4-й осью</span>.</p></div>
+      <div class="svc"><span class="n">03</span><h3>Координатно-расточная</h3><p>Обработка на универсальном станке и с ЧПУ.</p></div>
+      <div class="svc"><span class="n">04</span><h3>Зубофрезерная</h3><p>Шестерни с прямым зубом, звёздочки цепные.</p></div>
+      <div class="svc"><span class="n">05</span><h3>Плоскошлифовальная</h3><p>Обработка на высокоточных станках.</p></div>
+      <div class="svc"><span class="n">06</span><h3>Электроэрозионная</h3><p>Глубина резки <span class="mono">до 400 мм</span>.</p></div>
+      <div class="svc"><span class="n">07</span><h3>Термообработка</h3><p>Камерная печь <span class="mono">400×400×500</span>: закалка, отпуск, отжиг, цементация.</p></div>
+      <div class="svc"><span class="n">08</span><h3>Сварочные работы</h3><p>Газовая, электродуговая, полуавтоматическая в среде защитных газов.</p></div>
+      <div class="svc"><span class="n">09</span><h3>Гальваника и пескоструй</h3><p>Цинкование деталей, пескоструйная обработка.</p></div>
+      <div class="svc"><span class="n">10</span><h3>Слесарная обработка</h3><p>Любой сложности.</p></div>
+      <div class="svc"><span class="n">11</span><h3>Заготовительное производство</h3><p>Раскрой ленточной пилой.</p></div>
+      <div class="svc"><span class="n">12</span><h3>Покраска</h3><p>Готовых изделий.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Оборудование ===== -->
+<section id="equip" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <h2>Парк оборудования</h2>
+        <p>Свой цех, станки с ЧПУ. Марки и количество - по данным производства.</p>
+      </div>
+    </div>
+    <div class="equip">
+      <table>
+        <thead><tr><th>Группа</th><th>Количество</th><th>Особенности</th></tr></thead>
+        <tbody>
+          <tr><td>Токарные и обрабатывающие центры с ЧПУ</td><td class="mono">уточнить</td><td>Ø до 600 мм, длина до 2000 мм</td></tr>
+          <tr><td>Фрезерные центры с ЧПУ</td><td class="mono">уточнить</td><td>в т.ч. с 4-й осью; габариты стола - уточнить</td></tr>
+          <tr><td>Координатно-расточные станки</td><td class="mono">уточнить</td><td>универсальный + ЧПУ</td></tr>
+          <tr><td>Зубофрезерные станки</td><td class="mono">уточнить</td><td>шестерни с прямым зубом</td></tr>
+          <tr><td>Плоскошлифовальные станки</td><td class="mono">уточнить</td><td>высокоточные</td></tr>
+          <tr><td>Электроэрозионные станки</td><td class="mono">уточнить</td><td>рез до 400 мм</td></tr>
+          <tr><td>Термическая печь</td><td class="mono">1</td><td>камерная 400×400×500</td></tr>
+          <tr><td>Сварочное оборудование</td><td class="mono">уточнить</td><td>газовая, дуговая, полуавтомат</td></tr>
+          <tr><td>Ленточнопильный станок</td><td class="mono">уточнить</td><td>заготовительное производство</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">// перед публикацией заполнить количество и марки станков по факту и добавить фото цеха</p>
+  </div>
+</section>
+
+<!-- ===== Продукция ===== -->
+<section id="products" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <h2>Продукция</h2>
+        <p>Делаем детали по вашим чертежам и оснастку под задачу.</p>
+      </div>
+    </div>
+    <div class="svc-grid">
+      <div class="svc"><span class="n">·</span><h3>Детали вращения</h3><p>Валы, оси, болты, шпильки, штуцеры, переходники, ниппели.</p></div>
+      <div class="svc"><span class="n">·</span><h3>Корпусные и фланцевые детали</h3><p>Фланцы, крышки, втулки, гайки, корпусные детали, конфузоры, диски.</p></div>
+      <div class="svc"><span class="n">·</span><h3>Оснастка и инструмент</h3><p>Спецоснастка, технологическая оснастка по чертежам заказчика.</p></div>
+      <div class="svc"><span class="n">·</span><h3>Металлоконструкции</h3><p>Кронштейны, опоры, тележки, стеллажи, спецконтейнеры.</p></div>
+      <div class="svc"><span class="n">·</span><h3>Изделия и инвентарь</h3><p>Ворота, двери, скамейки, ограждения, урны.</p></div>
+      <div class="svc"><span class="n">·</span><h3>Индивидуальные заказы</h3><p>Нестандартные изделия - присылайте чертёж, разберёмся.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Наши работы ===== -->
+<section id="works" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <h2>Наши работы</h2>
+        <p>Примеры серийных партий: деталь, материал, тираж.</p>
+      </div>
+    </div>
+    <div class="works">
+      <div class="work">
+        <div class="ph">[ фото изделия ]</div>
+        <div class="body"><h3>Вал ступенчатый</h3><p><span class="mono">сталь 45 · тираж 500 шт/мес</span><br>Токарка с ЧПУ, шлифовка, термичка.</p></div>
+      </div>
+      <div class="work">
+        <div class="ph">[ фото изделия ]</div>
+        <div class="body"><h3>Фланец корпусной</h3><p><span class="mono">сталь 20 · тираж 300 шт/мес</span><br>Фрезеровка с 4-й осью, сверление, цинкование.</p></div>
+      </div>
+      <div class="work">
+        <div class="ph">[ фото изделия ]</div>
+        <div class="body"><h3>Оснастка технологическая</h3><p><span class="mono">по чертежам заказчика</span><br>Полный цикл: пила, фрезеровка, термичка, покраска.</p></div>
+      </div>
+    </div>
+    <p class="note">// заменить заглушки на реальные фото партий с указанием детали, материала и тиража</p>
+  </div>
+</section>
+
+<!-- ===== Процесс ===== -->
+<section id="process" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <h2>Как мы работаем с заказчиком</h2>
+        <p>Понятный процесс без сюрпризов: вы всегда знаете, на каком этапе ваш заказ.</p>
+      </div>
+    </div>
+    <div class="process">
+      <div class="step"><h3>Вы отправляете чертёж</h3><p>Форма ниже или почта - подойдёт PDF, DWG, фото эскиза.</p></div>
+      <div class="step"><h3>Считаем КП</h3><p>Технолог смотрит чертёж и называет цену и срок. Обычно в течение двух рабочих дней.</p></div>
+      <div class="step"><h3>Опытная партия</h3><p>Делаем пробную партию, согласовываем с вами образцы.</p></div>
+      <div class="step"><h3>Серия</h3><p>Выпускаем тираж по графику. Полный цикл - без посредников.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== О компании ===== -->
+<section id="about" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head"><div><h2>О компании</h2></div></div>
+    <div class="about">
+      <div>
+        <p>ООО «ДИНА» занимается металлообработкой с 1990 года. Накоплен большой опыт в обработке различных материалов, в работе с заказчиками и решении технических вопросов.</p>
+        <p>Мы - одно из немногих предприятий региона, которое принимает на работу людей с ограниченными возможностями.</p>
+        <p>Предприятие регулярно обновляет парк станков, работает с предприятиями авиационной и нефтегазовой отрасли Пермского края.</p>
+      </div>
+      <div class="years">
+        <div><span class="mono">1990</span><br>Начало производственной деятельности</div>
+        <div><span class="mono">2016</span><br>Оформлено юрлицо ООО «ДИНА» (ИНН 5920046407) - производство продолжило работу в новой организационной форме</div>
+        <div><span class="mono">сегодня</span><br>Свой цех в Чайковском, 36–38 сотрудников, полный цикл</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Вакансии ===== -->
+<section id="jobs" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <h2>Вакансии</h2>
+        <p>Мы растём и нанимаем. Нет подходящей должности - всё равно напишите: сохраним резюме и позовём.</p>
+      </div>
+      <span class="tag">обновлено: сегодня</span>
+    </div>
+    <div class="jobs">
+      <div class="job">
+        <h3>Оператор станков с ЧПУ</h3>
+        <p class="salary">зарплата по итогам собеседования</p>
+        <ul>
+          <li>токарные и фрезерные центры с ЧПУ</li>
+          <li>опыт приветствуется, ученикам - обучение</li>
+          <li>соцпакет</li>
+        </ul>
+        <a class="pill pill-orange" style="text-align:center" href="mailto:buh-dina@yandex.ru?subject=%D0%9E%D1%82%D0%BA%D0%BB%D0%B8%D0%BA%3A%20%D0%BE%D0%BF%D0%B5%D1%80%D0%B0%D1%82%D0%BE%D1%80%20%D0%A7%D0%9F%D0%A3">Откликнуться</a>
+      </div>
+      <div class="job">
+        <h3>Резчик на пилах и станках</h3>
+        <p class="salary">25 000–35 000 ₽</p>
+        <ul>
+          <li>заготовительное производство</li>
+          <li>возможность принять ученика</li>
+          <li>соцпакет</li>
+        </ul>
+        <a class="pill pill-orange" style="text-align:center" href="mailto:buh-dina@yandex.ru?subject=%D0%9E%D1%82%D0%BA%D0%BB%D0%B8%D0%BA%3A%20%D1%80%D0%B5%D0%B7%D1%87%D0%B8%D0%BA">Откликнуться</a>
+      </div>
+      <div class="job">
+        <h3>Бухгалтер (учёт и кадры)</h3>
+        <p class="salary">20 989–30 000 ₽</p>
+        <ul>
+          <li>ведение бухгалтерского учёта и кадров</li>
+          <li>штат 36–38 человек</li>
+          <li>соцпакет</li>
+        </ul>
+        <a class="pill pill-orange" style="text-align:center" href="mailto:buh-dina@yandex.ru?subject=%D0%9E%D1%82%D0%BA%D0%BB%D0%B8%D0%BA%3A%20%D0%B1%D1%83%D1%85%D0%B3%D0%B0%D0%BB%D1%82%D0%B5%D1%80">Откликнуться</a>
+      </div>
+    </div>
+    <p class="jobs-note">Отклик можно отправить на почту <a href="mailto:buh-dina@yandex.ru">buh-dina@yandex.ru</a> с пометкой «отклик» или через портал «Работа в России»: <a href="https://trudvsem.ru/company/1165958122967" rel="noopener">наша страница работодателя</a>. По вопросам трудоустройства звоните: <a href="tel:+79024789624">+7 (902) 478-96-24</a>.</p>
+  </div>
+</section>
+
+<!-- ===== Форма ===== -->
+<section id="order" style="padding-top:0">
+  <div class="wrap">
+    <div class="form-grid">
+      <div class="form-side">
+        <h2>Отправьте чертёж - посчитаем стоимость</h2>
+        <p>Приложите файл с чертежом (PDF, DWG, DXF) или фото эскиза. Технолог посмотрит и свяжется с вами в течение двух рабочих дней.</p>
+        <p class="mono">пн–пт 08:00–17:00<br>+7 (34241) 7-40-55 · +7 (902) 478-96-24<br>buh-dina@yandex.ru</p>
+      </div>
+      <form class="form-card" id="orderForm" novalidate>
+        <div class="field">
+          <label for="f-name">Как к вам обращаться</label>
+          <input id="f-name" name="name" type="text" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="f-contact">Телефон или e-mail</label>
+          <input id="f-contact" name="contact" type="text" autocomplete="tel" required>
+        </div>
+        <div class="field">
+          <label for="f-msg">Что нужно сделать</label>
+          <textarea id="f-msg" name="message" placeholder="Например: вал по чертежу, сталь 45, партия 100 шт."></textarea>
+        </div>
+        <div class="field">
+          <label class="file-field" for="f-file">
+            Прикрепить чертёж (PDF, DWG, фото)
+            <input id="f-file" type="file" accept=".pdf,.dwg,.dxf,.png,.jpg,.jpeg">
+            <span class="fname" id="fname"></span>
+          </label>
+        </div>
+        <label class="consent">
+          <input type="checkbox" required>
+          <span>Согласен на обработку персональных данных (политика конфиденциальности).</span>
+        </label>
+        <button class="pill pill-orange" style="width:100%;border:0;cursor:pointer" type="submit">Отправить заявку</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Контакты ===== -->
+<section id="contacts" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <h2>Контакты и реквизиты</h2>
+        <p>Производство находится в Чайковском - это ~100 км от Перми. Приезжайте, покажем цех.</p>
+      </div>
+    </div>
+    <div class="contacts-grid">
+      <div>
+        <ul class="contact-list">
+          <li><span class="k">адрес</span><span>618251, Пермский край, г. Чайковский, тер. Сутузово, д. 3, корп. 1</span></li>
+          <li><span class="k">телефон</span><span><a href="tel:+73424174055">+7 (34241) 7-40-55</a></span></li>
+          <li><span class="k">мобильный</span><span><a href="tel:+79024789624">+7 (902) 478-96-24</a></span></li>
+          <li><span class="k">почта</span><span><a href="mailto:buh-dina@yandex.ru">buh-dina@yandex.ru</a></span></li>
+          <li><span class="k">режим</span><span>пн–пт, 08:00–17:00</span></li>
+          <li><span class="k">вакансии</span><span><a href="mailto:buh-dina@yandex.ru">buh-dina@yandex.ru</a> — резюме с пометкой «отклик»</span></li>
+        </ul>
+        <a class="route" href="https://yandex.ru/maps/?text=%D0%A7%D0%B0%D0%B9%D0%BA%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B9%2C%20%D1%82%D0%B5%D1%80%D1%80%D0%B8%D1%82%D0%BE%D1%80%D0%B8%D1%8F%20%D0%A1%D1%83%D1%82%D1%83%D0%B7%D0%BE%D0%B2%D0%BE%2C%203" target="_blank" rel="noopener">Построить маршрут</a>
+      </div>
+      <div class="stamp" aria-label="Реквизиты ООО ДИНА">
+        <div class="row">
+          <div class="cell" style="grid-column:1/-1"><span class="lbl">Наименование организации</span><span class="big">ООО «ДИНА»</span></div>
+        </div>
+        <div class="row">
+          <div class="cell"><span class="lbl">ИНН</span>5920046407</div>
+          <div class="cell"><span class="lbl">КПП</span>592001001</div>
+        </div>
+        <div class="row">
+          <div class="cell"><span class="lbl">ОГРН</span>1165958122967</div>
+          <div class="cell"><span class="lbl">Дата регистрации</span>28.12.2016</div>
+        </div>
+        <div class="row">
+          <div class="cell" style="grid-column:1/-1"><span class="lbl">Юридический адрес</span>618251, Пермский край, г. Чайковский, тер. Сутузово, д. 3, корп. 1</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span class="fl"><img src="logo.png" alt="">© 1990–2026 ООО «ДИНА» · Металлообработка в Чайковском</span>
+    <span class="mono">ИНН 5920046407 · ОГРН 1165958122967</span>
+  </div>
+</footer>
+
+<script>
+var burger=document.getElementById('burger'),nav=document.getElementById('nav');
+burger.addEventListener('click',function(){nav.classList.toggle('open')});
+nav.addEventListener('click',function(e){if(e.target.tagName==='A')nav.classList.remove('open')});
+
+var file=document.getElementById('f-file'),fname=document.getElementById('fname');
+file.addEventListener('change',function(){
+  fname.textContent=file.files.length?('выбран: '+file.files[0].name):'';
+});
+
+document.getElementById('orderForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  var name=document.getElementById('f-name').value.trim();
+  var contact=document.getElementById('f-contact').value.trim();
+  var msg=document.getElementById('f-msg').value.trim();
+  var consent=this.querySelector('.consent input').checked;
+  if(!name||!contact||!consent){alert('Заполните имя, контакт и согласие на обработку данных.');return}
+  var body='Имя: '+name+'\nКонтакт: '+contact+'\n\n'+msg;
+  if(file.files.length){body+='\n\n(Файл "'+file.files[0].name+'" приложите к этому письму вручную)'}
+  location.href='mailto:buh-dina@yandex.ru?subject='+encodeURIComponent('Заявка с сайта dina59.ru')+'&body='+encodeURIComponent(body);
+});
+</script>
+</body>
+</html>
